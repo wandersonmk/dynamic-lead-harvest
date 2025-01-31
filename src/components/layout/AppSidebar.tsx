@@ -33,9 +33,14 @@ export function AppSidebar() {
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.label}>
                   <SidebarMenuButton asChild>
-                    <a href={item.href} className="flex w-full items-center gap-3">
+                    <a 
+                      href={item.href} 
+                      className="flex w-full items-center justify-center gap-3"
+                    >
                       <item.icon className="h-5 w-5 shrink-0" />
-                      {!isCollapsed && <span className="truncate">{item.label}</span>}
+                      {!isCollapsed && (
+                        <span className="truncate">{item.label}</span>
+                      )}
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
