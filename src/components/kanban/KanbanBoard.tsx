@@ -110,7 +110,10 @@ export function KanbanBoard() {
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     const newLead: Lead = {
       id: Math.random().toString(36).substring(7),
-      ...values,
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+      source: values.source,
       status: "new",
       createdAt: new Date().toISOString(),
     };
