@@ -8,17 +8,21 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 
 const menuItems = [
   { icon: Home, label: "Dashboard", href: "/" },
   { icon: Users, label: "Leads", href: "/leads" },
-  { icon: MessageSquare, label: "Messages", href: "/messages" },
-  { icon: BarChart2, label: "Reports", href: "/reports" },
-  { icon: Settings, label: "Settings", href: "/settings" },
+  { icon: MessageSquare, label: "Mensagens", href: "/messages" },
+  { icon: BarChart2, label: "Relatórios", href: "/reports" },
+  { icon: Settings, label: "Configurações", href: "/settings" },
 ];
 
 export function AppSidebar() {
+  const { state } = useSidebar();
+  const isCollapsed = state === "collapsed";
+
   return (
     <Sidebar>
       <SidebarContent>
@@ -31,7 +35,7 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <a href={item.href} className="flex items-center gap-3">
                       <item.icon className="h-5 w-5" />
-                      <span>{item.label}</span>
+                      {!isCollapsed && <span>{item.label}</span>}
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
